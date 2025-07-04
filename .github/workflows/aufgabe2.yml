@@ -15,7 +15,7 @@ jobs:
       Begruester: Hund
     steps:
       - name: Dialog
-        run: echo $Greeting $Begruester, das Passwort für $Password_Use ist 
+        run: echo $Greeting $Begruester, das Passwort für $Password_Use ist $secrets.PASS_WORD
         env:
           Password_Use: the CI/CD lecture
     
