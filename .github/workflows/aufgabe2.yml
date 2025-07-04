@@ -8,6 +8,7 @@ on:
 jobs:
   build-test:
     runs-on: ubuntu-latest
+    
     steps:
       - name: checkout Rep
         uses: actions/checkout@v4
@@ -27,6 +28,12 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+    if: always()
+    env:
+      Test: test
+    strategy: 
+      matrix:
+        version: ['11', '17', '21']
     steps:
       - name: checkout Rep
         uses: actions/checkout@v4
@@ -34,9 +41,9 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '21'
+          java-version: ${{matrix.version}}
       - name: lint
-        run: mvn checkstyle:check
+        run: mvn checkstyle:checkstyle
       - name: upload
         if: always()
         uses: actions/upload-artifact@v4
