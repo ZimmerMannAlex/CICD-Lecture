@@ -5,9 +5,23 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  Greeting: Moin
+
 jobs:
+  password: 
+    runs-on: ubuntu-latest
+    env:
+      Begruester: Hund
+    steps:
+      - name: Dialog
+        run: echo $Greeting $Begruester, das Passwort für $Password_Use ist 
+        env:
+          Password_use: 'the CI/CD lecture'
+    
   build-test:
     runs-on: ubuntu-latest
+
     
     steps:
       - name: checkout Rep
@@ -29,11 +43,10 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     if: always()
-    env:
-      Test: test
     strategy: 
       matrix:
         version: ['11', '17', '21']
+    name: Build and Test with Maven on Java ${{ matrix.version }}
     steps:
       - name: checkout Rep
         uses: actions/checkout@v4
