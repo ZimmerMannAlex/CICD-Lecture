@@ -1,3 +1,4 @@
+name: Aufgabe2
 on:
   push:
     branches:
