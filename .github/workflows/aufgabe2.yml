@@ -18,6 +18,8 @@ jobs:
           java-version: '21'
       - name: test
         run: mvn -B clean verify
+      - name: lint
+        run: mvn checkstyle:check
       - name: upload
         if: always()
         uses: actions/upload-artifact@v4
