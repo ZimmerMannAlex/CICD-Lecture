@@ -1,10 +1,20 @@
 on:
   push:
-    branch:
+    branches:
       - main
   workflow_dispatch:
 
 jobs:
-  say-hello:
+  build-test:
     runs-on: ubuntu-latest
-  steps:
+    steps:
+      - name: checkout Rep
+        uses: actions/checkout@v4
+      - name: setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 21
+      - name: test
+        run: mvn –B clean verify
+    
