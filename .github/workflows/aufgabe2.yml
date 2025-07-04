@@ -17,5 +17,4 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
       - name: test
-        run: mvn –B clean verify
-    
+        run: mvn -B clean verify
