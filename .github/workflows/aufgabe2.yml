@@ -17,7 +17,7 @@ jobs:
       - name: Dialog
         run: echo $Greeting $Begruester, das Passwort für $Password_Use ist 
         env:
-          Password_use: the CI/CD lecture
+          Password_Use: the CI/CD lecture
     
   build-test:
     runs-on: ubuntu-latest
