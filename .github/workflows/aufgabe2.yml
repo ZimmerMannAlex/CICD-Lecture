@@ -18,6 +18,23 @@ jobs:
           java-version: '21'
       - name: test
         run: mvn -B clean verify
+      - name: upload
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: junit-results
+          path: target/surefire-reports/
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout Rep
+        uses: actions/checkout@v4
+      - name: setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
       - name: lint
         run: mvn checkstyle:check
       - name: upload
