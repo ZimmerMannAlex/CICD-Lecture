@@ -1,1 +1,14 @@
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
+jobs:
+  build:
+    name: Build Job
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hello
+        run: echo Hello World
